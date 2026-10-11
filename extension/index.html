@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="ThinkAloud — keep the reasoning, not just the answer." />
+    <title>ThinkAloud — local study recorder</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#">think<span>aloud</span></a>
+        <div class="local-badge"><a href="download/thinkaloud-chrome.zip" download>Download Chrome extension</a><i></i> Local only</div>
+      </header>
+
+      <section id="new-session" class="view active" aria-labelledby="new-title">
+        <div class="intro">
+          <p class="kicker">A quieter study companion</p>
+          <h1 id="new-title">Keep the reasoning,<br /><em>not just the answer.</em></h1>
+          <p class="lede">Record what you were thinking while you study. Everything stays on this device.</p>
+        </div>
+        <form id="session-form" class="card session-form">
+          <label for="session-name">Session name</label>
+          <input id="session-name" name="name" value="AAMC FL 3 · CARS" maxlength="80" required />
+          <fieldset>
+            <legend>Capture mode</legend>
+            <label class="mode-option selected"><input type="radio" name="mode" value="audio" checked /><span><strong>Audio only</strong><small>Record everything. No tagging, no interruptions.</small></span><b>⌘</b></label>
+            <label class="mode-option"><input type="radio" name="mode" value="tags" /><span><strong>Question tags</strong><small>Mark questions as you say them, then jump back later.</small></span><b>⌘</b></label>
+          </fieldset>
+          <button class="button primary" type="submit">Start session <span>→</span></button>
+          <p class="fine-print">No account. No transcript. No page access. You can export or delete everything.</p>
+        </form>
+      </section>
+
+      <section id="recording" class="view" aria-labelledby="recording-title" hidden>
+        <div class="recording-head"><div><p class="kicker" id="mode-label">AUDIO ONLY</p><h2 id="recording-title">AAMC FL 3 · CARS</h2></div><span class="recording-state"><i></i> Recording</span></div>
+        <div class="recorder card">
+          <div class="timer" id="timer">00:00</div>
+          <div class="waveform" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="recorder-actions"><button id="pause" class="button secondary" type="button">Ⅱ Pause</button><button id="transcribe" class="button secondary" type="button">Transcription off</button><button id="end" class="button danger" type="button">End session</button></div>
+          <p class="storage-note"><span>●</span> Session state saved locally · demo capture active</p>
+        </div>
+        <div id="transcript-panel" class="card tag-panel" hidden><div class="panel-heading"><div><p class="kicker">Live transcript</p><h3>What you said</h3></div><span class="count">Browser speech recognition</span></div><p id="transcript" class="transcript" aria-live="polite">Transcription is off.</p><p class="hint">Speech recognition availability depends on your browser and language settings.</p></div>
+        <div id="tag-panel" class="card tag-panel" hidden><div class="panel-heading"><div><p class="kicker">Live markers</p><h3>Question timeline</h3></div><button id="add-marker" class="button small" type="button">＋ Add marker</button></div><div id="live-markers" class="marker-list"></div><p class="hint">Say “question 17” or add a marker manually.</p></div>
+      </section>
+
+      <section id="review" class="view" aria-labelledby="review-title" hidden>
+        <div class="review-head"><div><p class="kicker">SESSION COMPLETE</p><h2 id="review-title">AAMC FL 3 · CARS</h2><p id="review-meta" class="muted">September 12 · Question tags</p></div><button id="new-session-button" class="button secondary" type="button">New session</button></div>
+        <div class="card playback"><div class="play-row"><button id="play" class="play-button" type="button">▶</button><div><strong id="play-label">Ready to review</strong><span id="audio-meta">Continuous recording</span></div><span class="speed">1×</span></div><audio id="audio-player" hidden></audio><input id="scrubber" class="scrubber" type="range" min="0" max="100" value="0" aria-label="Playback position" /><div class="time-row"><span id="elapsed">00:00</span><span id="duration">00:00</span></div></div>
+        <div class="card review-card"><div class="panel-heading"><div><p class="kicker">Jump back in</p><h3>Question timeline</h3></div><span id="marker-count" class="count">0 markers</span></div><div id="review-markers" class="marker-list"></div></div>
+        <div class="review-footer"><span>Stored locally · 42 MB</span><div><button class="button text" type="button" id="export">Export session</button><button class="button text" type="button" id="delete">Delete</button></div></div>
+      </section>
+      <footer><span>thinkaloud is free, local, and deliberately small.</span><nav><a href="docs/BUSINESS.md">Why this exists</a><a href="docs/ARCHITECTURE.md">How it works</a></nav></footer>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

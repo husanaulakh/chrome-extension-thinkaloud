@@ -1,0 +1,1 @@
+{"manifest_version":3,"name":"ThinkAloud — study recorder","version":"0.1.0","description":"Record and review study reasoning locally.","action":{"default_title":"Open ThinkAloud","default_popup":"popup.html"},"permissions":["storage"]}
