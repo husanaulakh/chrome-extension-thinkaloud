@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "thinkaloud",
+  "compatibility_date": "2026-10-06",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "exclude": [
+      "node_modules/**/*",
+      ".git/**/*",
+      ".wrangler/**/*",
+      "tests/**/*",
+      "*.test.mjs",
+      ".env*",
+      "*.md",
+      "*.log",
+      ".DS_Store"
+    ]
+  }
+}
